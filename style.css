@@ -1,0 +1,79 @@
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding-left: 2vw;
+    padding-right: 2vw;
+    font-size: 40px;
+    color: white;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+	height: 80px;
+    background-color: rgb(0, 123, 113);
+}
+
+a {
+    text-decoration: none;
+}
+
+.przyciski {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 32vh;
+}
+
+.przyciski button {
+    margin: 10px;
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.zawartosc {
+    margin-bottom: 48px;
+}
+
+.zagadnienia {
+    margin: 10vw;
+    margin-top: 10px;
+    font-size: 30px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.zagadnienia a {
+    color: black;
+    text-decoration: underline;
+}
+
+.kolka {
+    font-size: 30px;
+    border-radius: 10px;
+    cursor: pointer;
+    padding-left: 6px;
+    padding-right: 6px;
+}
+
+button {
+    background-color: rgb(0, 123, 113);
+    color: white;
+}
+
+.rozdzial {
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 40px;
+    color: rgb(0, 123, 113);
+}
+
+ul {
+    margin-left: 56px;
+}
