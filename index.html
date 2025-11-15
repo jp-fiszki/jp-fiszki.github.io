@@ -7,26 +7,58 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="slowo_zagadka"><p>行く</p></div>
-    <div><p style="display: none;" id="showhide">いく  iść</p></div>
-    <div class="guziki"><button onclick="f_showhide()">Pokaż</button><button onclick="f_kolejny()">Kolejny</button></div>
+    <div class="wszystko">
+        <div class="slowo_zagadka"><p>Kliknij "Kolejny" aby rozpocząć</p></div>
+        <div><p style="display: none;" id="showhide"></p></div>
+        <div class="guziki"><button onclick="f_showhide()">Pokaż</button><button onclick="f_kolejny()">Kolejny</button></div>
+    </div>
 
     <script>
-        
-        
-        fetch("./kanji.json")
-            .then(data => console.log(data))
-        
         const slowo_zagadka = document.querySelector(".slowo_zagadka")
-        const odp_1 = document.querySelector(".odpowiedz_1")
+        const slowo_odp = document.getElementById("showhide")
+       
+       
+       // 1. fetchowanie danych
+        let kanji
 
+        fetch("https://jp-fiszki.github.io/kanji.json")
+            .then(res => res.json())
+            .then(json => {
+                kanji = json;
+            })
+        
+        
+        // 2. pokazywanie i chowanie odpowiedzi
         function f_showhide() {
-            var x = document.getElementById("showhide");
+            var x = slowo_odp;
             if (x.style.display === "none") {
                 x.style.display = "block";
             } else {
                 x.style.display = "none";
             }
+        }
+
+
+        // 3. kolejne losowe pytanie
+        function f_kolejny() {
+            // 3a. wybór losowego pola w losowej linii
+            let nr_linia = Math.floor(Math.random()*Object.keys(kanji).length)+1
+            let nr_pole = Math.floor(Math.random()*3)+1
+            console.log(nr_pole)
+            // 3b. wyświetlenie wybranego slowo_zagadka
+            slowo_zagadka.innerHTML = kanji[nr_linia][nr_pole]
+            // 3c. wskazanie dwóch pozostałych pól w linii
+            if (nr_pole == 1) {
+                slowo_odp.innerText = String(kanji[nr_linia][2]+kanji[nr_linia][3])
+            }
+            else if (nr_pole == 2) {
+                slowo_odp.innerText = String(kanji[nr_linia][1]+kanji[nr_linia][3])
+            }
+            else {
+                slowo_odp.innerText = String(kanji[nr_linia][1]+kanji[nr_linia][2])
+            }
+            // 3d. schowanie slowo_odp
+            slowo_odp.style.display = "none"
         }
     </script>
 </body>
