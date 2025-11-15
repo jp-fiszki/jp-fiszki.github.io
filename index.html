@@ -11,7 +11,7 @@
 		<button class="r_1">Rozdziały 1-4</button><button class="r_2">Rozdziały 5-8</button>
 	</header>
     <div class="wszystko">
-        <div class="slowo_zagadka"><p>Kliknij "Kolejny" aby rozpocząć</p></div>
+        <div class="slowo_zagadka"><p>Rozdziały 1-4</p></div>
         <div class="slowo_odpowiedz"><p style="display: none;" id="showhide"></p></div>
         <div class="guziki"><button onclick="f_showhide()">Pokaż</button><button onclick="f_kolejny()">Kolejny</button></div>
     </div>
@@ -39,7 +39,7 @@
             .then(json => {
                 kanji = json;
             })
-            slowo_zagadka.innerText = 'Kliknij "Kolejny" aby rozpocząć'
+            slowo_zagadka.innerText = 'Rozdziały 1-4'
             slowo_odp.style.display = "none"
         })
         
@@ -49,7 +49,7 @@
             .then(json => {
                 kanji = json;
             })
-            slowo_zagadka.innerText = 'Kliknij "Kolejny" aby rozpocząć'
+            slowo_zagadka.innerText = 'Rozdziały 5-8'
             slowo_odp.style.display = "none"
         })
         
