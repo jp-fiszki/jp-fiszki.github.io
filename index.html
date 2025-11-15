@@ -14,8 +14,7 @@
     <script>
         
         
-        fetch("./kanji.txt")
-            .then(res => res.json())
+        fetch("./kanji.json")
             .then(data => console.log(data))
         
         const slowo_zagadka = document.querySelector(".slowo_zagadka")
