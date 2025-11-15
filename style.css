@@ -62,7 +62,7 @@ header button {
     width: 80vw;
     height: 60vh;
     margin: auto;
-    margin-top: 15vh;
+    margin-top: 10vh;
 }
 
 .slowo_zagadka {
@@ -82,4 +82,5 @@ header button {
     padding-top: 3vh;
     
 }
+
 }
