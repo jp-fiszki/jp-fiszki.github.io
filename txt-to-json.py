@@ -7,7 +7,7 @@ numer = 1
 
 for linia in f_input:
     slowa = []
-    slowa.append(linia.split())
+    slowa.append(linia.strip().split("\t"))
     f_output.write('"'+str(numer)+'": {\n"1": "'+slowa[0][0]+'",\n"2": "'+slowa[0][1]+'",\n"3": "'+slowa[0][2]+'"\n},\n')
     numer += 1
 
