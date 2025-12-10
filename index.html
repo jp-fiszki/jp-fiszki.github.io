@@ -8,7 +8,7 @@
 </head>
 <body>
     <header style="margin-bottom: 0px;">
-		<button class="r_1">Rozdziały 1-4</button><button class="r_2">Rozdziały 5-8</button>
+		<button class="r_1">Rozdziały 1-4</button><button class="r_2">Rozdziały 5-8</button><button class="r_3">Rozdziały 9-10</button>
 	</header>
     <div class="wszystko">
         <div class="slowo_zagadka"><p>Rozdziały 1-4</p></div>
@@ -21,6 +21,7 @@
         const slowo_odp = document.getElementById("showhide")
         const r_1 = document.querySelector(".r_1")
         const r_2 = document.querySelector(".r_2")
+		const r_3 = document.querySelector(".r_3")
 
        
        // 1. fetchowanie danych
@@ -50,6 +51,16 @@
                 kanji = json;
             })
             slowo_zagadka.innerText = 'Rozdziały 5-8'
+            slowo_odp.style.display = "none"
+        })
+
+		r_3.addEventListener('click', () => {
+            fetch("https://jp-fiszki.github.io/kanji3.json")
+            .then(res => res.json())
+            .then(json => {
+                kanji = json;
+            })
+            slowo_zagadka.innerText = 'Rozdziały 9-10'
             slowo_odp.style.display = "none"
         })
         
@@ -86,4 +97,5 @@
         }
     </script>
 </body>
+
 </html>
