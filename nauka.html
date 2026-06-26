@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiszki</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header style="margin-bottom: 0px;">
+		<button class="r_1">Rozdziały 1-4</button><button class="r_2">Rozdziały 5-8</button><button class="r_3">Rozdziały 9-10</button><button class="r_4">EGZAMIN</button>
+	</header>
+    <div class="wszystko">
+        <div class="slowo_zagadka"><p>Egzamin</p></div>
+        <div class="slowo_odpowiedz"><p style="display: none;" id="showhide"></p></div>
+        <div class="guziki"><button onclick="f_showhide()">Pokaż</button><button onclick="f_kolejny()">Kolejny</button></div>
+    </div>
+
+    <script>
+        const slowo_zagadka = document.querySelector(".slowo_zagadka")
+        const slowo_odp = document.getElementById("showhide")
+        const r_1 = document.querySelector(".r_1")
+        const r_2 = document.querySelector(".r_2")
+		const r_3 = document.querySelector(".r_3")
+		const r_4 = document.querySelector(".r_4")
+        let nr_linia = 1
+
+       
+       // 1. fetchowanie danych
+        let kanji
+        // 1a. domyślne kanji do egzaminu
+        fetch("https://jp-fiszki.github.io/kanji4.json")
+            .then(res => res.json())
+            .then(json => {
+                kanji = json;
+            })
+
+        // 1b. przyciski
+        r_1.addEventListener('click', () => {
+            fetch("https://jp-fiszki.github.io/kanji1.json")
+            .then(res => res.json())
+            .then(json => {
+                kanji = json;
+            })
+            slowo_zagadka.innerText = 'Rozdziały 1-4'
+            slowo_odp.style.display = "none"
+        })
+        
+        r_2.addEventListener('click', () => {
+            fetch("https://jp-fiszki.github.io/kanji2.json")
+            .then(res => res.json())
+            .then(json => {
+                kanji = json;
+            })
+            slowo_zagadka.innerText = 'Rozdziały 5-8'
+            slowo_odp.style.display = "none"
+        })
+
+		r_3.addEventListener('click', () => {
+            fetch("https://jp-fiszki.github.io/kanji3.json")
+            .then(res => res.json())
+            .then(json => {
+                kanji = json;
+            })
+            slowo_zagadka.innerText = 'Rozdziały 9-10'
+            slowo_odp.style.display = "none"
+        })
+
+		r_4.addEventListener('click', () => {
+            fetch("https://jp-fiszki.github.io/kanji4.json")
+            .then(res => res.json())
+            .then(json => {
+                kanji = json;
+            })
+            slowo_zagadka.innerText = 'Egzamin'
+            slowo_odp.style.display = "none"
+        })
+        
+        // 2. pokazywanie i chowanie odpowiedzi
+        function f_showhide() {
+            var x = slowo_odp;
+            if (x.style.display === "none") {
+                x.style.display = "block";
+            } else {
+                x.style.display = "none";
+            }
+        }
+
+
+        // 3. kolejne losowe pytanie
+        function f_kolejny() {
+            // 3a. wybór losowego pola ze znaczeniem
+            let nr_pole = 3
+            // 3b. wyświetlenie wybranego slowo_zagadka
+            slowo_zagadka.innerHTML = kanji[nr_linia][nr_pole]
+            // 3c. wskazanie dwóch pozostałych pól w linii
+            slowo_odp.innerText = String(kanji[nr_linia][1]+"\n"+kanji[nr_linia][2])
+            // 3d. schowanie slowo_odp
+            slowo_odp.style.display = "none"
+            // 3e. przejście do kolejnej linii
+            nr_linia += 1
+        }
+    </script>
+</body>
+
+</html>
