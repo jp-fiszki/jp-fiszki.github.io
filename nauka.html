@@ -13,7 +13,7 @@
     <div class="wszystko">
         <div class="slowo_zagadka"><p>Egzamin</p></div>
         <div class="slowo_odpowiedz"><p style="display: none;" id="showhide"></p></div>
-        <div class="guziki"><button onclick="f_showhide()">Pokaż</button><button onclick="f_kolejny()">Kolejny</button></div>
+        <div class="guziki"><button onclick="f_poprzedni()">Poprzedni</button><button onclick="f_showhide()">Pokaż</button><button onclick="f_kolejny()">Kolejny</button></div>
     </div>
 
     <script>
@@ -87,18 +87,24 @@
         }
 
 
-        // 3. kolejne losowe pytanie
+        // 3. kolejne pytanie
         function f_kolejny() {
-            // 3a. wybór losowego pola ze znaczeniem
-            let nr_pole = 3
             // 3b. wyświetlenie wybranego slowo_zagadka
-            slowo_zagadka.innerHTML = kanji[nr_linia][nr_pole]
+            slowo_zagadka.innerHTML = kanji[nr_linia][3]
             // 3c. wskazanie dwóch pozostałych pól w linii
             slowo_odp.innerText = String(kanji[nr_linia][1]+"\n"+kanji[nr_linia][2])
             // 3d. schowanie slowo_odp
             slowo_odp.style.display = "none"
             // 3e. przejście do kolejnej linii
             nr_linia += 1
+        }
+
+        // 4. poprzednie pytanie
+        function f_poprzedni() {
+            nr_linia -= 2
+            slowo_zagadka.innerHTML = kanji[nr_linia][3]
+            slowo_odp.innerText = String(kanji[nr_linia][1]+"\n"+kanji[nr_linia][2])
+            slowo_odp.style.display = "none"
         }
     </script>
 </body>
